@@ -18,7 +18,7 @@ if($subs.GetType().IsArray -and $subs.length -gt 1){
 $userName = ((az ad signed-in-user show) | ConvertFrom-JSON).UserPrincipalName
 $sqlPassword = Read-Host -Prompt "Enter the SQL Administrator password you used in the deployment" -AsSecureString
 $sqlPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringUni([System.Runtime.InteropServices.Marshal]::SecureStringToCoTaskMemUnicode($sqlPassword))
-$resourceGroupName = "Synapse-MCW"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name you used in the deployment"
 $uniqueId = Read-Host -Prompt "Enter the unique suffix you used in the deployment"
 
 $subscriptionId = (Get-AzContext).Subscription.Id
